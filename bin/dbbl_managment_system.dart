@@ -4,24 +4,9 @@ void main() {
   createSavingsAccount();
 }
 
-void createSavingsAccount() {
-  print('-----------Welcome To Dutch Bangla Bank PLC.-----------');
-  stdout.write('Enter Account Holder Name (String) : ');
-  String accountHolderName = stdin.readLineSync()!;
-  stdout.write('Enter Account Number (Int): ');
-  int accountNumber = int.parse(stdin.readLineSync()!);
-  stdout.write('Enter Account Balance (Double) : ');
-  double accountBalance = double.parse(stdin.readLineSync()!);
-  stdout.write('Enter Interest Rate: ');
-  double interestRate = double.parse(stdin.readLineSync()!);
 
-  SavingsAccount savingsAccount = SavingsAccount(
-      accountHolderName, accountNumber, accountBalance, interestRate);
-  BankAccount bankAccount =
-      BankAccount(accountHolderName, accountNumber, accountBalance);
-  bankAccount.myMenu(savingsAccount);
-}
-
+//Inheritance Parent class
+//Encapsulation* private value
 class BankAccount {
   String _accountHolderName;
   int _accountNumber;
@@ -30,7 +15,7 @@ class BankAccount {
   BankAccount(
       this._accountHolderName, this._accountNumber, this._accountBalance);
 
-  //Getter
+  //Getter for public access
   String get accountHolderName => _accountHolderName;
   int get accountNumber => _accountNumber;
   double get accountBalance => _accountBalance;
@@ -96,7 +81,9 @@ class BankAccount {
   }
 }
 
+
 //Inheritance
+//subClass or Child
 
 class SavingsAccount extends BankAccount {
   final double _interestRate;
@@ -111,4 +98,25 @@ class SavingsAccount extends BankAccount {
     deposit(interest);
     print('$interest is Added successfully');
   }
+}
+
+
+
+//Input information & Menu
+void createSavingsAccount() {
+  print('-----------Welcome To Dutch Bangla Bank PLC.-----------');
+  stdout.write('Enter Account Holder Name (String) : ');
+  String accountHolderName = stdin.readLineSync()!;
+  stdout.write('Enter Account Number (Int): ');
+  int accountNumber = int.parse(stdin.readLineSync()!);
+  stdout.write('Enter Account Balance (Double) : ');
+  double accountBalance = double.parse(stdin.readLineSync()!);
+  stdout.write('Enter Interest Rate: ');
+  double interestRate = double.parse(stdin.readLineSync()!);
+
+  SavingsAccount savingsAccount = SavingsAccount(
+      accountHolderName, accountNumber, accountBalance, interestRate);
+  BankAccount bankAccount =
+  BankAccount(accountHolderName, accountNumber, accountBalance);
+  bankAccount.myMenu(savingsAccount);
 }
